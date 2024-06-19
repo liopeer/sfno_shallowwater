@@ -7,9 +7,10 @@ hydra:
     dir: ${output_dir}
 
 log_dir: ./outputs
-output_dir_scheme: ${now:%Y-%m-%d}/${now:%Y-%m-%d_%H-%M-%S}_${hydra:runtime.choices.model}${hydra:runtime.choices.data}${prepend_underscore:${hydra:job.override_dirname}}
+output_dir_scheme: ${now:%Y-%m-%d}/${now:%Y-%m-%d_%H-%M-%S}_${hydra:runtime.choices.model}${hydra:runtime.choices.data}${prepend_underscore:${hydra:job.override_dirname}}"
 output_dir: ${log_dir}/${output_dir:${output_dir_scheme},${debug}}
 wandb_dir: ${abspath:${output_dir}}
+wandb_run_name: ${output_dir_scheme}
 ckpt_dir: ${mkdirs:${output_dir}/ckpt}
 
 training:

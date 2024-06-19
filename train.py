@@ -61,7 +61,7 @@ def setup_wandb_logger(total_config: DictConfig) -> WandbLogger:
         mode      = "dryrun" if total_config.debug else None,
         save_dir  = total_config.wandb_dir,
         log_model = False,
-        name      = total_config.output_dir.split("/")[-1]
+        name      = total_config.wandb_run_name
     )
 
     return logger
