@@ -1,0 +1,7 @@
+max_epochs: 100
+val_check_interval: 1.0
+lr: 0.001
+effective_batch_size: 64
+ckpt_monitor_val: val_loss
+batch_size: ???
+accumulate_grad_batches: ???

@@ -1,0 +1,5 @@
+defaults:
+  - model_globals
+n_modes: [32,32]
+hidden_channels: 256
+n_layers: 5

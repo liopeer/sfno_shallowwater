@@ -1,0 +1,19 @@
+hydra:
+  job:
+    config:
+      override_dirname: 
+        item_sep: _
+  run:
+    dir: ${output_dir}
+
+log_dir: ./outputs
+output_dir_scheme: ${now:%Y-%m-%d}/${now:%Y-%m-%d_%H-%M-%S}_${hydra:runtime.choices.model}${hydra:runtime.choices.data}${prepend_underscore:${hydra:job.override_dirname}}
+output_dir: ${log_dir}/${output_dir:${output_dir_scheme},${debug}}
+wandb_dir: ${abspath:${output_dir}}
+ckpt_dir: ${mkdirs:${output_dir}/ckpt}
+
+training:
+  batch_size: ${batch_size}
+  accumulate_grad_batches: ${int_divide:${training.effective_batch_size},${mult:${num_devices},${batch_size}}}
+
+num_devices: ${len:${devices}}

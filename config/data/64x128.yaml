@@ -1,0 +1,3 @@
+defaults:
+  - data_globals
+dims: [64, 128]
